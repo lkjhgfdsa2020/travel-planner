@@ -36,7 +36,7 @@ Use $find-family-holidays with my dates, airports, travellers, room requirements
 
 Include the children's ages on the travel dates. The finder asks only for essential missing constraints and returns fewer than 15 results rather than padding the list with non-compliant offers.
 
-Searches default to flight packages with direct flights only and no flight-duration limit. Users can override the transport type or allow connections. Optional hard filters include an overall or destination-specific minimum hotel standard, beach requirements, must-have family facilities, and maximum airport-transfer time.
+Searches default to flight packages with direct flights only and no flight-duration limit. Users can override the transport type or allow connections. Optional hard filters include an overall or destination-specific minimum hotel standard, beach requirements, must-have family facilities, and maximum airport-to-hotel distance or travel time. Route estimates use the exact package arrival airport and are clearly distinguished from published package-transfer times.
 
 ## Affiliate Disclosure
 

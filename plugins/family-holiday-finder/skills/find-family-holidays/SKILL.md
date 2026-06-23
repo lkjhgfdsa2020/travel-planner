@@ -1,6 +1,6 @@
 ---
 name: find-family-holidays
-description: Search, verify, compare, and rank family package holidays on Blue Style, EXIM tours, TUI, Cedok, and Hydrotour using Chrome. Use for requests to find the best 15 holidays subject to dates, trip length, airports, traveller ages, rooms, flight times, board, hotel standard, beach and family facilities, transfer time, budget, or destination preferences.
+description: Search, verify, compare, and rank family package holidays on Blue Style, EXIM tours, TUI, Cedok, and Hydrotour using Chrome. Use for requests to find the best 15 holidays subject to dates, trip length, airports, traveller ages, rooms, flight times, board, hotel standard, beach and family facilities, airport-to-hotel distance or travel time, budget, or destination preferences.
 ---
 
 # Find Family Holidays
@@ -29,11 +29,11 @@ At the start of a new search, do not browse immediately unless the user has alre
 > 6. Acceptable flight departure times for both outbound and return flights
 > 7. Board preference
 > 8. Optional minimum hotel standard, either overall or by destination
-> 9. Optional hard requirements: beach distance/type, family facilities, maximum airport-transfer time, budget, or destination exclusions
+> 9. Optional hard requirements: beach distance/type, family facilities, maximum airport-to-hotel distance or travel time, budget, or destination exclusions
 >
 > Defaults: flight packages, direct flights only, no flight-duration limit, and up to 15 verified options.
 
-If the user already provided some constraints, acknowledge them briefly and ask only for the missing essentials in one grouped message. Treat hotel standard, beach requirements, family facilities, transfer time, budget, destination exclusions, hotel atmosphere/location, and accessibility as optional; do not block the search when they are omitted.
+If the user already provided some constraints, acknowledge them briefly and ask only for the missing essentials in one grouped message. Treat hotel standard, beach requirements, family facilities, airport-to-hotel distance or travel time, budget, destination exclusions, hotel atmosphere/location, and accessibility as optional; do not block the search when they are omitted.
 
 After collecting the essentials, summarize the interpreted constraints concisely and begin browsing without asking for another confirmation unless values conflict or remain genuinely ambiguous.
 
@@ -51,7 +51,7 @@ Extract or ask only for missing constraints that materially affect results:
 - Minimum hotel standard overall or by destination, if any
 - Beach requirements such as maximum distance, beachfront location, surface type, or gradual sea entry, if any
 - Must-have family facilities such as a kids' pool, kids' club, playground, cot, animation, aquapark, or slides, if any
-- Maximum airport-transfer time, if any
+- Maximum road distance and/or travel time from the destination airport to the hotel, if any
 - Budget and destination exclusions, if any
 - Hotel atmosphere/location or accessibility requirements when the user volunteers them
 - Number of results, defaulting to exactly 15
@@ -67,11 +67,11 @@ Before searching Hydrotour, ask whether departure from Bratislava Airport (BTS) 
 ## Search Workflow
 
 1. For Blue Style, EXIM tours, TUI, and Cedok, enter the operator website through its exact affiliate URL before searching. Wait for the redirect and continue in that same Chrome tab and browser session. Search Hydrotour directly, subject to BTS approval.
-2. Apply the broad hard filters first: transport, dates, duration, airports, travellers, destinations, board basis, hotel standard, beach, family facilities, and transfer time. Ignore optional categories the user did not constrain.
+2. Apply the broad hard filters first: transport, dates, duration, airports, travellers, destinations, board basis, hotel standard, beach, family facilities, and airport-to-hotel distance or travel time. Ignore optional categories the user did not constrain.
 3. Identify which destinations have at least one plausible package before spending time on hotel-level verification. Briefly report the matching destination set.
 4. Sort or inspect by customer rating, while retaining enough candidates to survive later exclusions.
 5. Open promising hotel offers rather than relying only on result cards.
-6. Verify the exact package dates, airport, destination airport, board, total family price, and current availability.
+6. Verify the exact package dates, departure airport, arrival airport used by the package, board, total family price, and current availability.
 7. Inspect both flight legs. By default, verify that both legs are direct and exclude connecting itineraries. Apply the time restriction to the scheduled departure time of each leg, but apply no flight-duration limit unless the user explicitly adds one. Also report after-midnight arrival dates when they could surprise the traveller.
 8. Verify the exact room configuration sold by the operator:
    - For two rooms, confirm the offer actually contains two rooms and the requested adult/child split.
@@ -81,10 +81,22 @@ Before searching Hydrotour, ask whether departure from Bratislava Airport (BTS) 
    - Confirm the operator's stated hotel category and apply the overall or destination-specific minimum.
    - Confirm beach distance and characteristics from the operator or official hotel source.
    - Confirm every must-have family facility rather than inferring it from a family-friendly label.
-   - Confirm airport-transfer time when published. If only an estimated journey time is available, label it as an estimate and identify the source.
+   - Verify airport-to-hotel distance and travel time according to **Airport-To-Hotel Routing** when the user constrained either value.
    - Honor atmosphere/location and accessibility requirements when the user provided them.
 10. Exclude packages that fail any hard constraint. Mark an unresolved fact as unverified; do not silently treat it as compliant.
 11. Compare the verified survivors across all operators and return the strongest 15 overall, not separate unranked lists.
+
+## Airport-To-Hotel Routing
+
+When the user specifies a maximum airport-to-hotel distance or travel time, verify every shortlisted option as follows:
+
+1. Identify the exact arrival airport used by the specific package; do not assume the nearest airport serves the flight.
+2. Prefer distance or transfer-time information published by the travel operator for that package.
+3. If unavailable, use the official hotel website when it identifies the arrival airport and route distance or time.
+4. Otherwise, use Google Maps or a comparable routing service to obtain the road distance and estimated driving time between the exact airport and hotel. Use a drivable route rather than straight-line distance.
+5. Record both distance and time whenever available, along with the source and check date.
+6. Label map-based travel times as driving estimates. Do not present them as guaranteed package-transfer times: shared coaches can take longer because of traffic, waiting, and stops at other hotels.
+7. Apply the user's maximum to the best available evidence. Exclude an option when the published value or map estimate exceeds the maximum. When an estimate is within the limit, retain it but mark compliance as estimated rather than guaranteed.
 
 ## Ranking
 
@@ -104,7 +116,7 @@ Use judgement rather than a false-precision score. A small review difference sho
 - Keep the exact direct offer URL for every shortlisted package as internal verification evidence, but follow the affiliate-link rules for all user-facing links.
 - Prefer live operator pages for package facts and official hotel pages for room specifications.
 - Use one focused web search for an external room specification, then inspect the strongest primary result.
-- Prefer operator and official hotel sources for star category, beach, family facilities, accessibility, and transfer information. Clearly label externally estimated transfer times.
+- Prefer operator and official hotel sources for star category, beach, family facilities, accessibility, and airport-transfer information. Use Google Maps or a comparable routing service only when those sources do not provide the airport-to-hotel route, and clearly label the result as an estimate.
 - Do not use stale snippets as proof when the source page can be opened.
 - Avoid claiming that an offer is bookable until its detail page shows availability for the requested occupancy.
 - Note that prices can change and state the date and local time of the check.
@@ -131,7 +143,7 @@ Start with a short verdict and the matching destinations. Then provide a ranked 
 | Rank | Hotel and destination | Operator | Dates / nights | Flights | Room setup and area | Board | Ratings | Total price | Why it ranks |
 |---|---|---|---|---|---|---|---|---|---|
 
-Link hotel names, destinations, and operator names according to the affiliate-link rules. Keep flight times and direct-flight status explicit for both legs. Label every room-area source as official hotel, Booking.com, or unverified. When hotel standard, beach, family facilities, or transfer time was constrained, show the verified facts in the table or caveats.
+Link hotel names, destinations, and operator names according to the affiliate-link rules. Keep flight times and direct-flight status explicit for both legs. Label every room-area source as official hotel, Booking.com, or unverified. When hotel standard, beach, or family facilities were constrained, show the verified facts in the table or caveats. When airport-to-hotel distance or time was constrained, add an **Airport to hotel** column with the arrival airport, road distance, travel time, source, and estimated/published status.
 
 After the table, include:
 
