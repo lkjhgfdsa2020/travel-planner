@@ -15,7 +15,7 @@ Hydrotour commonly uses departures from Bratislava Airport (BTS). The skill asks
 Add the GitHub repository as a Codex marketplace:
 
 ```bash
-codex plugin marketplace add <github-owner>/<github-repository>
+codex plugin marketplace add lkjhgfdsa2020/travel-planner
 ```
 
 Open the Codex plugin directory with `/plugins`, select the **Family Holiday Finder** marketplace, and install **family-holiday-finder**. Start a new thread after installation.
