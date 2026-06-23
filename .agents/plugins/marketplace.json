@@ -1,0 +1,20 @@
+{
+  "name": "family-holiday-finder",
+  "interface": {
+    "displayName": "Family Holiday Finder"
+  },
+  "plugins": [
+    {
+      "name": "family-holiday-finder",
+      "source": {
+        "source": "local",
+        "path": "./plugins/family-holiday-finder"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
