@@ -38,6 +38,8 @@ Include the children's ages on the travel dates. The finder asks only for essent
 
 Searches default to flight packages with direct flights only and no flight-duration limit. Users can override the transport type or allow connections. Optional hard filters include an overall or destination-specific minimum hotel standard, beach requirements, must-have family facilities, and maximum airport-to-hotel distance or travel time. Route estimates use the exact package arrival airport and are clearly distinguished from published package-transfer times.
 
+Finalist hotels are checked against Booking.com, Google Reviews, and Tripadvisor rather than relying on travel-agency ratings. Users can set independent minimums such as Booking.com 8/10 or Google 4.3/5. Results show each source compactly on its native scale with its review count.
+
 ## Affiliate Disclosure
 
 Links for Blue Style, EXIM tours, TUI, and Cedok are affiliate links. The publisher may receive a commission if a traveller books through them, at no additional cost to the traveller. Hydrotour links are currently non-affiliate links.
