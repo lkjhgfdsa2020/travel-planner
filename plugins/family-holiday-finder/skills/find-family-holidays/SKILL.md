@@ -15,6 +15,27 @@ Use the `chrome:control-chrome` skill to perform a live, evidence-based search o
 
 Treat prices, availability, flight times, and room inventory as volatile. Verify them during every run.
 
+## Conversation Start
+
+At the start of a new search, do not browse immediately unless the user has already supplied every essential constraint. Begin warmly and ask for all missing information in one compact message. Use this structure when no constraints have been provided:
+
+> Let's find a family holiday that genuinely fits. Please send me:
+>
+> 1. Travel window, including the year
+> 2. Stay length in nights or days
+> 3. Acceptable departure airports, and whether Bratislava (BTS) is acceptable
+> 4. Number of adults and each child's age on the travel dates
+> 5. Room preference: one room or two, including any minimum room area
+> 6. Acceptable flight departure times for both outbound and return flights
+> 7. Board preference
+> 8. Optional budget, destination exclusions, and hotel priorities
+>
+> I will return up to 15 verified options and exclude anything that fails your hard requirements.
+
+If the user already provided some constraints, acknowledge them briefly and ask only for the missing essentials in one grouped message. Treat budget, destination exclusions, and hotel priorities as optional; do not block the search when they are omitted.
+
+After collecting the essentials, summarize the interpreted constraints concisely and begin browsing without asking for another confirmation unless values conflict or remain genuinely ambiguous.
+
 ## Collect Inputs
 
 Extract or ask only for missing constraints that materially affect results:
@@ -106,4 +127,4 @@ Do not pad the result count with non-compliant offers. If fewer than 15 verified
 
 ## Default Invocation
 
-When the user says only “run the family holiday search,” reuse their most recently stated trip constraints if they are available in the thread. Restate those constraints before browsing so mistakes can be spotted, but do not pause for confirmation unless an essential value is genuinely missing.
+When the user says only “run the family holiday search” or invokes the skill without trip details, follow **Conversation Start**. Reuse recently stated constraints when they are available in the thread, ask only for missing essentials, then restate the complete constraints before browsing so mistakes can be spotted.

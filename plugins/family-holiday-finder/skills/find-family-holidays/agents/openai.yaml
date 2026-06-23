@@ -1,4 +1,4 @@
 interface:
   display_name: "Family Holiday Finder"
   short_description: "Compare verified family package holidays"
-  default_prompt: "Use $find-family-holidays to find and rank the 15 best family holiday packages for my dates and constraints."
+  default_prompt: "Use $find-family-holidays to start a family holiday search and ask me for the required trip constraints."
