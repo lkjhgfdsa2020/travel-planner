@@ -1,6 +1,6 @@
 {
   "name": "family-holiday-finder",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Find and rank 15 verified family package holidays across selected Czech and Slovak travel operators.",
   "author": {
     "name": "Jan"
@@ -24,7 +24,7 @@
       "Interactive"
     ],
     "defaultPrompt": [
-      "Start my family holiday search and ask for my trip constraints."
+      "Start my search in my current language and ask for constraints as a numbered list."
     ]
   }
 }

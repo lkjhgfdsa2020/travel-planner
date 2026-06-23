@@ -15,26 +15,36 @@ Use the `chrome:control-chrome` skill to perform a live, evidence-based search o
 
 Treat prices, availability, flight times, and room inventory as volatile. Verify them during every run.
 
+## Language
+
+Use Czech or English automatically:
+
+- Prefer the user's configured conversation or interface language when it is available.
+- Respond in Czech when the setting or current conversation is Czech, and in English when it is English.
+- When settings are unavailable, infer the language from the user's latest substantive message. Default to English only when the signal is genuinely ambiguous.
+- Follow an explicit language request or language switch immediately. Do not ask the user to choose between Czech and English.
+- Localize the intake, progress updates, result headings, explanations, disclosures, and caveats. Preserve hotel names, place names, rating abbreviations, and operator names as appropriate.
+
 ## Conversation Start
 
-At the start of a new search, do not browse immediately unless the user has already supplied every essential constraint. Begin warmly and ask for all missing information in one compact message. Use this structure when no constraints have been provided:
+At the start of a new search, do not browse immediately unless the user has already supplied every essential constraint. Begin warmly and ask for all missing information in one compact message. Use this structure when no constraints have been provided, translating it naturally into Czech when required by **Language**:
 
-> Let's find a family holiday that genuinely fits. Please send me:
->
-> 1. Travel window, including the year
-> 2. Stay length in nights or days
-> 3. Acceptable departure airports, and whether Bratislava (BTS) is acceptable
-> 4. Number of adults and each child's age on the travel dates
-> 5. Room preference: one room or two, including any minimum room area
-> 6. Acceptable flight departure times for both outbound and return flights
-> 7. Board preference
-> 8. Optional minimum hotel standard, either overall or by destination
-> 9. Optional hard requirements: beach distance/type, family facilities, maximum airport-to-hotel distance or travel time, budget, or destination exclusions
-> 10. Optional minimum external ratings, for example Booking.com 8/10, Google 4.3/5, or Tripadvisor 4/5
->
-> Defaults: flight packages, direct flights only, no flight-duration limit, and up to 15 verified options.
+Let's find a family holiday that genuinely fits. Please send me:
 
-If the user already provided some constraints, acknowledge them briefly and ask only for the missing essentials in one grouped message. Treat hotel standard, beach requirements, family facilities, airport-to-hotel distance or travel time, external rating thresholds, budget, destination exclusions, hotel atmosphere/location, and accessibility as optional; do not block the search when they are omitted.
+1. Travel window, including the year
+2. Stay length in nights or days
+3. Acceptable departure airports, and whether Bratislava (BTS) is acceptable
+4. Number of adults and each child's age on the travel dates
+5. Room preference: one room or two, including any minimum room area
+6. Acceptable flight departure times for both outbound and return flights
+7. Board preference
+8. Optional minimum hotel standard, either overall or by destination
+9. Optional hard requirements: beach distance/type, family facilities, maximum airport-to-hotel distance or travel time, budget, or destination exclusions
+10. Optional minimum external ratings, for example Booking.com 8/10, Google 4.3/5, or Tripadvisor 4/5
+
+Defaults: flight packages, direct flights only, no flight-duration limit, and up to 15 verified options.
+
+Always render the initial constraint request as a Markdown numbered list using `1.`, `2.`, `3.`, and so on. Never use bullet points for this intake. If the user already provided some constraints, acknowledge them briefly and ask only for the missing essentials in one grouped numbered list that restarts at `1.`. Treat hotel standard, beach requirements, family facilities, airport-to-hotel distance or travel time, external rating thresholds, budget, destination exclusions, hotel atmosphere/location, and accessibility as optional; do not block the search when they are omitted.
 
 After collecting the essentials, summarize the interpreted constraints concisely and begin browsing without asking for another confirmation unless values conflict or remain genuinely ambiguous.
 

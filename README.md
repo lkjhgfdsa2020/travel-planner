@@ -36,6 +36,8 @@ Use $find-family-holidays with my dates, airports, travellers, room requirements
 
 Include the children's ages on the travel dates. The finder asks only for essential missing constraints and returns fewer than 15 results rather than padding the list with non-compliant offers.
 
+The conversation automatically uses Czech or English based on the user's settings or current language. Initial and follow-up constraint requests always use a numbered list.
+
 Searches default to flight packages with direct flights only and no flight-duration limit. Users can override the transport type or allow connections. Optional hard filters include an overall or destination-specific minimum hotel standard, beach requirements, must-have family facilities, and maximum airport-to-hotel distance or travel time. Route estimates use the exact package arrival airport and are clearly distinguished from published package-transfer times.
 
 Finalist hotels are checked against Booking.com, Google Reviews, and Tripadvisor rather than relying on travel-agency ratings. Users can set independent minimums such as Booking.com 8/10 or Google 4.3/5. Results show each source compactly on its native scale with its review count.
