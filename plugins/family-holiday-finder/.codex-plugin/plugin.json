@@ -1,6 +1,6 @@
 {
   "name": "family-holiday-finder",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Find and rank 15 verified family package holidays across selected Czech and Slovak travel operators.",
   "author": {
     "name": "Jan"
@@ -17,7 +17,7 @@
   "interface": {
     "displayName": "Family Holiday Finder",
     "shortDescription": "Compare verified family package holidays.",
-    "longDescription": "Searches Blue Style, EXIM tours, TUI, Cedok, and optionally Hydrotour, then verifies rooms, flights, board, ratings, and prices before ranking 15 family holiday options.",
+    "longDescription": "Searches Blue Style, EXIM tours, TUI, Cedok, and optionally Hydrotour, then verifies rooms, direct flights, hotel standards, beaches, family facilities, transfers, board, ratings, and prices.",
     "developerName": "Jan",
     "category": "Productivity",
     "capabilities": [
